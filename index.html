@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Academy - Learn Capture The Flag</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🚩</span>
+                <span class="brand-name">CTF Academy</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#walkthroughs" class="nav-link">Walkthroughs</a></li>
+                <li><a href="#categories" class="nav-link">Categories</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Master CTF Challenges</h1>
+                <p class="hero-subtitle">Learn from detailed walkthroughs of picoCTF, Google CTF, and more. Step-by-step solutions for beginners.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('walkthroughs')">Browse Walkthroughs</button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('categories')">Explore Categories</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Walkthroughs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">CTF Events</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="ctfFilter">CTF Platform:</label>
+                    <select id="ctfFilter" class="filter-select">
+                        <option value="all">All Platforms</option>
+                        <option value="picoctf">picoCTF</option>
+                        <option value="googlectf">Google CTF</option>
+                        <option value="hackthebox">HackTheBox</option>
+                        <option value="overthewire">OverTheWire</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="categoryFilter">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="web">Web Exploitation</option>
+                        <option value="crypto">Cryptography</option>
+                        <option value="forensics">Forensics</option>
+                        <option value="reversing">Reverse Engineering</option>
+                        <option value="pwn">Binary Exploitation</option>
+                        <option value="misc">Miscellaneous</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="difficultyFilter">Difficulty:</label>
+                    <select id="difficultyFilter" class="filter-select">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search challenges...">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Walkthroughs Section -->
+    <section id="walkthroughs" class="walkthroughs-section">
+        <div class="container">
+            <h2 class="section-title">Challenge Walkthroughs</h2>
+            <p class="section-subtitle">Detailed step-by-step solutions for popular CTF challenges</p>
+            
+            <div id="walkthroughGrid" class="walkthrough-grid">
+                <!-- Walkthroughs will be populated by JavaScript -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMoreBtn">Load More Challenges</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Challenge Categories</h2>
+            <p class="section-subtitle">Explore different types of CTF challenges</p>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="web">
+                    <div class="category-icon">🌐</div>
+                    <h3>Web Exploitation</h3>
+                    <p>SQL injection, XSS, CSRF, and more web vulnerabilities</p>
+                    <span class="challenge-count">45 challenges</span>
+                </div>
+                <div class="category-card" data-category="crypto">
+                    <div class="category-icon">🔐</div>
+                    <h3>Cryptography</h3>
+                    <p>Ciphers, encryption, hashing, and cryptographic attacks</p>
+                    <span class="challenge-count">38 challenges</span>
+                </div>
+                <div class="category-card" data-category="forensics">
+                    <div class="category-icon">🔍</div>
+                    <h3>Forensics</h3>
+                    <p>File analysis, steganography, memory forensics</p>
+                    <span class="challenge-count">42 challenges</span>
+                </div>
+                <div class="category-card" data-category="reversing">
+                    <div class="category-icon">⚙️</div>
+                    <h3>Reverse Engineering</h3>
+                    <p>Binary analysis, decompilation, and code understanding</p>
+                    <span class="challenge-count">35 challenges</span>
+                </div>
+                <div class="category-card" data-category="pwn">
+                    <div class="category-icon">💥</div>
+                    <h3>Binary Exploitation</h3>
+                    <p>Buffer overflows, ROP chains, heap exploitation</p>
+                    <span class="challenge-count">28 challenges</span>
+                </div>
+                <div class="category-card" data-category="misc">
+                    <div class="category-icon">🎯</div>
+                    <h3>Miscellaneous</h3>
+                    <p>Programming, logic puzzles, and unique challenges</p>
+                    <span class="challenge-count">32 challenges</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <p class="section-subtitle">Essential tools and guides for CTF beginners</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>🛠️ Essential Tools</h3>
+                    <ul>
+                        <li>Burp Suite - Web proxy</li>
+                        <li>Ghidra - Reverse engineering</li>
+                        <li>Wireshark - Network analysis</li>
+                        <li>John the Ripper - Password cracking</li>
+                        <li>pwntools - Exploit development</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>📚 Learning Paths</h3>
+                    <ul>
+                        <li>Start with picoCTF Primer</li>
+                        <li>Master basic Linux commands</li>
+                        <li>Learn Python scripting</li>
+                        <li>Understand networking basics</li>
+                        <li>Practice on beginner challenges</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>🎓 Recommended Platforms</h3>
+                    <ul>
+                        <li>picoCTF - Best for beginners</li>
+                        <li>OverTheWire - Progressive learning</li>
+                        <li>HackTheBox - Hands-on practice</li>
+                        <li>TryHackMe - Guided rooms</li>
+                        <li>CTFtime - Event calendar</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h3>💡 Pro Tips</h3>
+                    <ul>
+                        <li>Read writeups after solving</li>
+                        <li>Join CTF Discord communities</li>
+                        <li>Practice consistently</li>
+                        <li>Learn from failed attempts</li>
+                        <li>Build your own toolkit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🚩 CTF Academy</h4>
+                    <p>Helping beginners master Capture The Flag challenges through detailed walkthroughs and resources.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#walkthroughs">Walkthroughs</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#">Discord Server</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CTF Academy. Built for the CTF community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for walkthrough details -->
+    <div id="walkthroughModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
